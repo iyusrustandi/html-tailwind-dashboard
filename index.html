@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link href="src/output.css" rel="stylesheet" />
+  </head>
+  <body class="text-gray-900 bg-gray-100 dark:bg-gray-900 dark:text-gray-100">
+    <!-- Navbar -->
+    <nav class="p-4 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800">
+      <div class="container flex items-center justify-between mx-auto">
+        <div class="flex items-center space-x-2">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="w-8 h-8">
+            <path
+              d="M337.8 5.4C327-1.8 313-1.8 302.2 5.4L166.3 96 48 96C21.5 96 0 117.5 0 144L0 464c0 26.5 21.5 48 48 48l208 0 0-96c0-35.3 28.7-64 64-64s64 28.7 64 64l0 96 208 0c26.5 0 48-21.5 48-48l0-320c0-26.5-21.5-48-48-48L473.7 96 337.8 5.4zM96 192l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM96 320l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 64c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-64zM232 176a88 88 0 1 1 176 0 88 88 0 1 1 -176 0zm88-48c-8.8 0-16 7.2-16 16l0 32c0 8.8 7.2 16 16 16l32 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-16 0 0-16c0-8.8-7.2-16-16-16z"
+              fill="currentColor"
+            />
+          </svg>
+          <div class="text-lg font-semibold text-white dark:text-gray-200">Logo</div>
+        </div>
+
+        <div class="flex items-center space-x-4">
+          <!-- Dark Mode Toggle -->
+          <button id="darkModeToggle" class="text-white hover:text-gray-300 dark:text-gray-200 dark:hover:text-gray-400">
+            <svg id="darkModeIcon" class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 0 1-.5-17.986V3c-.354.966-.5 1.911-.5 3a9 9 0 0 0 9 9c.239 0 .254.018.488 0A9.004 9.004 0 0 1 12 21Z" />
+            </svg>
+            <svg id="lightModeIcon" class="hidden w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 5V3m0 18v-2M7.05 7.05 5.636 5.636m12.728 12.728L16.95 16.95M5 12H3m18 0h-2M7.05 16.95l-1.414 1.414M18.364 5.636 16.95 7.05M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"
+              />
+            </svg>
+          </button>
+          <!-- Profile Picture and Dropdown -->
+          <div class="relative">
+            <img id="profilePicture" src="#" alt="Profile Picture" class="hidden w-8 h-8 rounded-full cursor-pointer" />
+            <svg id="defaultAvatar" class="w-8 h-8 text-gray-800 cursor-pointer dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                fill-rule="evenodd"
+                d="M12 20a7.966 7.966 0 0 1-5.002-1.756l.002.001v-.683c0-1.794 1.492-3.25 3.333-3.25h3.334c1.84 0 3.333 1.456 3.333 3.25v.683A7.966 7.966 0 0 1 12 20ZM2 12C2 6.477 6.477 2 12 2s10 4.477 10 10c0 5.5-4.44 9.963-9.932 10h-.138C6.438 21.962 2 17.5 2 12Zm10-5c-1.84 0-3.333 1.455-3.333 3.25S10.159 13.5 12 13.5c1.84 0 3.333-1.455 3.333-3.25S13.841 7 12 7Z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            <div id="dropdownMenu" class="absolute right-0 z-20 hidden w-48 py-2 mt-2 bg-white rounded-md shadow-lg dark:bg-gray-800">
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Username</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">email@example.com</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">My Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="flex">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="w-64 h-screen transition-all duration-300 bg-white shadow-md dark:bg-gray-800">
+        <div class="flex items-center justify-between p-4">
+          <h2 id="sidebarTitle" class="text-lg font-semibold text-gray-700 dark:text-gray-300">Menu</h2>
+          <button id="minimizeSidebar" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 focus:outline-none">
+            <svg id="minimizeIcon" fill="none" stroke="currentColor" class="w-6 h-6 text-gray-800 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            <svg id="maximizeIcon" fill="none" stroke="currentColor" class="hidden w-6 h-6 text-gray-800 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="p-4">
+          <ul id="sidebarMenu">
+            <li class="flex items-center mb-4 group">
+              <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6.025A7.5 7.5 0 1 0 17.975 14H10V6.025Z" />
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.5 3c-.169 0-.334.014-.5.025V11h7.975c.011-.166.025-.331.025-.5A7.5 7.5 0 0 0 13.5 3Z" />
+              </svg>
+              <a href="welcome.html" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400" data-page="welcome">Dashboard</a>
+            </li>
+            <li class="flex flex-col mb-4">
+              <button id="dataMenuButton" class="flex items-center justify-between w-full text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 focus:outline-none">
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 6c0 1.657-3.134 3-7 3S5 7.657 5 6m14 0c0-1.657-3.134-3-7-3S5 4.343 5 6m14 0v6M5 6v6m0 0c0 1.657 3.134 3 7 3s7-1.343 7-3M5 12v6c0 1.657 3.134 3 7 3s7-1.343 7-3v-6"
+                    />
+                  </svg>
+                  <a href="#" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Data</a>
+                </div>
+                <svg class="w-4 h-4 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                </svg>
+              </button>
+              <ul id="dataMenu" class="hidden mt-2 ml-4">
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 mr-2 text-gray-800 dark:text-white" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  </svg>
+                  <a href="teacher/index.html" class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400" data-page="guru">Teacher</a>
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 mr-2 text-gray-800 dark:text-white" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  </svg>
+                  <a href="student/index.html" class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400" data-page="siswa">Student</a>
+                </li>
+                <li class="flex items-center mb-2">
+                  <svg class="w-5 h-5 mr-2 text-gray-800 dark:text-white" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                  </svg>
+                  <a href="employee/index.html" class="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400" data-page="pegawai">Employee</a>
+                </li>
+              </ul>
+            </li>
+            <li class="flex items-center mb-4 group">
+              <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 19V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v13H7a2 2 0 0 0-2 2Zm0 0a2 2 0 0 0 2 2h12M9 3v14m7 0v4" />
+              </svg>
+              <a href="grade.html" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Grade</a>
+            </li>
+            <li class="flex items-center mb-4 group">
+              <svg class="w-6 h-6 mr-2 text-gray-800 dark:text-white" fill="none" stroke="currentColor" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 4h3a1 1 0 0 1 1 1v15a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h3m0 3h6m-6 5h6m-6 4h6M10 3v4h4V3h-4Z" />
+              </svg>
+              <a href="announcement.html" class="text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400">Announcement</a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 bg-gray-100 dark:bg-gray-900">
+        <!-- Content from welcome-content.html will be loaded here -->
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        if (localStorage.getItem('darkMode') === 'true') {
+          document.documentElement.classList.add('dark');
+          document.getElementById('darkModeIcon').classList.add('hidden');
+          document.getElementById('lightModeIcon').classList.remove('hidden');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.getElementById('darkModeIcon').classList.remove('hidden');
+          document.getElementById('lightModeIcon').classList.add('hidden');
+        }
+
+        document.getElementById('darkModeToggle').addEventListener('click', function () {
+          if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            document.getElementById('darkModeIcon').classList.remove('hidden');
+            document.getElementById('lightModeIcon').classList.add('hidden');
+            localStorage.setItem('darkMode', 'false');
+          } else {
+            document.documentElement.classList.add('dark');
+            document.getElementById('darkModeIcon').classList.add('hidden');
+            document.getElementById('lightModeIcon').classList.remove('hidden');
+            localStorage.setItem('darkMode', 'true');
+          }
+        });
+
+        const mainContent = document.querySelector('main');
+
+        // Load the initial content
+        fetch('welcome.html')
+          .then((response) => response.text())
+          .then((data) => {
+            mainContent.innerHTML = data;
+          })
+          .catch((error) => console.error('Error loading content:', error));
+
+        // Sidebar minimize functionality
+        const minimizeSidebar = document.getElementById('minimizeSidebar');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarTitle = document.getElementById('sidebarTitle');
+        const minimizeIcon = document.getElementById('minimizeIcon');
+        const maximizeIcon = document.getElementById('maximizeIcon');
+        const sidebarMenu = document.getElementById('sidebarMenu');
+
+        minimizeSidebar.addEventListener('click', function () {
+          sidebar.classList.toggle('w-64');
+          sidebar.classList.toggle('w-16');
+          minimizeIcon.classList.toggle('hidden');
+          maximizeIcon.classList.toggle('hidden');
+          sidebarTitle.classList.toggle('hidden');
+          const menuItems = sidebarMenu.querySelectorAll('a');
+          menuItems.forEach((item) => {
+            item.classList.toggle('hidden');
+          });
+        });
+
+        // Profile Picture Dropdown
+        document.getElementById('defaultAvatar').addEventListener('click', function () {
+          const dropdownMenu = document.getElementById('dropdownMenu');
+          dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close dropdown menu when clicking outside
+        document.addEventListener('click', function (event) {
+          const dropdownMenu = document.getElementById('dropdownMenu');
+          const defaultAvatar = document.getElementById('defaultAvatar');
+          if (!defaultAvatar.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.add('hidden');
+          }
+        });
+
+        // Data Menu Dropdown
+        document.getElementById('dataMenuButton').addEventListener('click', function () {
+          const dataMenu = document.getElementById('dataMenu');
+          dataMenu.classList.toggle('hidden');
+        });
+
+        // Preventing dropdown menu close on inside click
+        document.getElementById('dataMenu').addEventListener('click', function (event) {
+          event.stopPropagation();
+        });
+
+        // Handle sidebar menu clicks
+        document.querySelectorAll('#sidebarMenu a').forEach((link) => {
+          link.addEventListener('click', function (event) {
+            event.preventDefault();
+            const page = this.getAttribute('href');
+            loadPage(page);
+          });
+        });
+
+        function loadPage(page) {
+          fetch(page)
+            .then((response) => response.text())
+            .then((data) => {
+              mainContent.innerHTML = data;
+            })
+            .catch((error) => console.error('Error loading content:', error));
+        }
+      });
+    </script>
+  </body>
+</html>
